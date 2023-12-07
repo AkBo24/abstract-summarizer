@@ -1,9 +1,15 @@
 from flask import Flask, render_template, request
 from flask_assets import Bundle, Environment
-
+from flask_limiter import Limiter
+from flask_limiter.util import get_remote_address
 from todo import todos
 
 app = Flask(__name__)
+limiter = Limiter(
+    get_remote_address, 
+    app=app,
+    storage_uri="memory://",
+)
 
 assets = Environment(app)
 css = Bundle("src/main.css", output="dist/main.css")
@@ -18,6 +24,7 @@ def homepage():
     return render_template("index.html")
 
 @app.route("/search", methods=["POST"])
+@limiter.limit('1/minute')
 def search_todo():
     search_term = request.form.get("search")
 
