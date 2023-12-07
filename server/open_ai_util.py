@@ -3,13 +3,13 @@ from constants import OPENAI_API_KEY
 
 client = OpenAI(api_key=OPENAI_API_KEY)
 
-def test():
+def summarize_abstract(abstract):
     completion = client.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=[
-            {"role": "system", "content": "You are a poetic assistant, skilled in explaining complex programming concepts with creative flair."},
-            {"role": "user", "content": "Compose a poem that explains the concept of recursion in programming."}
+            {"role": "system", "content": "You are an engineer's helpful assistent. They need you to summarize research paper abstracts."},
+            {"role": "user", "content": f"Write a one sentence summary of the following abstract: {abstract}"}
         ]
     )
 
-    print(completion.choices[0].message)
+    return completion

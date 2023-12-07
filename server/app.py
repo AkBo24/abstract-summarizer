@@ -5,6 +5,7 @@ from flask_limiter.util import get_remote_address
 
 from todo import todos
 from scholarly_util import query
+from open_ai_util import summarize_abstract
 
 app = Flask(__name__)
 limiter = Limiter(
@@ -48,9 +49,12 @@ def search_todo():
 
 @app.route("/summarize", methods=["POST"])
 def summarize_openai():
-    print(request.form)
     abstract = request.form.get("abstract")
-    return f'<p>{abstract}</p>'
+    openai_summary = summarize_abstract(abstract=abstract)
+
+    print(openai_summary.usage.total_tokens)
+
+    return f'<p>{openai_summary.choices[0].message.content}</p>'
 
 if __name__ == "__main__":
     app.run(debug=True)
