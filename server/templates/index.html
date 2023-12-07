@@ -13,10 +13,14 @@
         placeholder="Search"
         class="bg-white h-10 px-5 pr-10 rounded-full text-2xl focus:outline-none"
     />
-    <button type="submit" hx-indicator=".htmx-indicator">
+    <button
+        type="submit"
+        hx-indicator=".htmx-indicator"
+        class="bg-blue-500 rounded text-white p-3"
+    >
         Submit search
-        <span class="htmx-indicator">Searching...</span>
     </button>
+    <span class="htmx-indicator">Searching...</span>
 </form>
 
 <table class="border-collapse w-small w-2/3 mx-auto">
@@ -25,22 +29,22 @@
             <th
                 class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell"
             >
-                #
-            </th>
-            <th
-                class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell"
-            >
                 Title
             </th>
             <th
                 class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell"
             >
-                Completed
+                Abstract
+            </th>
+            <th
+                class="p-3 font-bold uppercase bg-gray-200 text-gray-600 border border-gray-300 hidden lg:table-cell"
+            >
+                Action
             </th>
         </tr>
     </thead>
     <tbody id="todo-results">
-        {% include 'todo.html' %}
+        {% include 'journal.html' %}
     </tbody>
 </table>
 {% endblock content %}

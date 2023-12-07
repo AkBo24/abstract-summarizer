@@ -8,9 +8,9 @@ def query(search_query=''):
     if len(search_query)==0:
         return None
 
-    req_uri = f'http://api.springernature.com/metadata/pam?q=keyword:${search_query}&api_key={API_KEY}'
+    req_uri = f'http://api.springernature.com/metadata/json?q=keyword:${search_query}&api_key={API_KEY}'
     res = requests.get(req_uri)
-    return res
+    return res.json()
 
 # # Retrieve the author's data, fill-in, and print
 # search_query = scholarly..earch_pubs('Steven A Cholewiak')

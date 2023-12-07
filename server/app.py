@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 from flask_assets import Bundle, Environment
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
+
 from todo import todos
 from scholarly_util import query
 
@@ -31,8 +32,8 @@ def search_todo():
         return '<p>Empty search query</p>'
 
     query_res = query(search_query)
-    print(query_res.text)
-    return '<p>Mock endpoint</p>'
+    return render_template("journal.html", records=query_res['records'])
+
     # search_term = request.form.get("search")
 
     # if not len(search_term):

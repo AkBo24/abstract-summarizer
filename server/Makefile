@@ -2,5 +2,5 @@ activate:
 	source ../.venv/bin/activate
 
 run:
-	tailwindcss -i ./static/src/main.css -o ./static/dist/main.css --minify
+	tailwindcss -i ./static/src/main.css -o ./static/dist/main.css 
 	python app.py

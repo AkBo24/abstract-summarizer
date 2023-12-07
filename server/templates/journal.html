@@ -1,0 +1,23 @@
+{% if records|length>0 %} {% for record in records %}
+<tr
+    class="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0"
+>
+    <td
+        class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static"
+    >
+        {{record.title}}
+    </td>
+    <td
+        class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static"
+    >
+        {{record.abstract}}
+    </td>
+    <td
+        class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static"
+    >
+        <button hx-trigger="/summarize" class="bg-blue-500 rounded text-white p-3">
+            Summarize Abstract
+        </button>
+    </td>
+</tr>
+{% endfor %} {% endif %}
