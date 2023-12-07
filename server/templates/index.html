@@ -3,7 +3,7 @@
 {% extends 'base.html' %} {% block content %}
 <form
     hx-post="/search"
-    hx-target="#todo-results"
+    hx-target="#records-results"
     class="w-small w-2/3 mx-auto py-10 text-gray-600"
 >
     <input
@@ -43,7 +43,7 @@
             </th>
         </tr>
     </thead>
-    <tbody id="todo-results">
+    <tbody id="records-results">
         {% include 'journal.html' %}
     </tbody>
 </table>

@@ -8,6 +8,7 @@
         {{record.title}}
     </td>
     <td
+        id="abstract"
         class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static"
     >
         {{record.abstract}}
@@ -15,9 +16,16 @@
     <td
         class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static"
     >
-        <button hx-trigger="/summarize" class="bg-blue-500 rounded text-white p-3">
+        <button
+            hx-post="/summarize"
+            hx-vals="js:{abstract: '{{record.abstract}}'}"
+            hx-target="#summary-result"
+            class="bg-blue-500 rounded text-white p-3"
+        >
             Summarize Abstract
         </button>
+
+        <p id="summary-result"></p>
     </td>
 </tr>
 {% endfor %} {% endif %}

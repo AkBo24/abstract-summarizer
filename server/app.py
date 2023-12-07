@@ -25,7 +25,7 @@ def homepage():
     return render_template("index.html")
 
 @app.route("/search", methods=["POST"])
-@limiter.limit('3/minute')
+@limiter.limit('5/minute')
 def search_todo():
     search_query = request.form.get("search")
     if not search_query:
@@ -45,6 +45,12 @@ def search_todo():
     #         res_todos.append(todo)
 
     # return render_template("todo.html", todos=res_todos)
+
+@app.route("/summarize", methods=["POST"])
+def summarize_openai():
+    print(request.form)
+    abstract = request.form.get("abstract")
+    return f'<p>{abstract}</p>'
 
 if __name__ == "__main__":
     app.run(debug=True)
