@@ -31,7 +31,7 @@ def search_todo():
         return '<p>Empty search query</p>'
 
     query_res = query(search_query)
-    print(query_res)
+    print(query_res.text)
     return '<p>Mock endpoint</p>'
     # search_term = request.form.get("search")
 
